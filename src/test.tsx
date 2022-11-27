@@ -9,6 +9,7 @@ import Hand from "./components/Hand";
 import jsonData from "./deck.json";
 import Transfers from "./components/contractSend";
 
+
 const App = () => {
   const [Tezos, setTezos] = useState<TezosToolkit>(
     new TezosToolkit("https://ghostnet.ecadinfra.com")
@@ -354,6 +355,7 @@ const App = () => {
         {/* <h1 className="buttons"> {String(playerWon)}</h1> */}
         <h1 className="buttons">{playerWon ? "YOU WIN" : "YOU LOSE"}</h1>
         <h2>PRESS DISCONNECT TO START AGAIN</h2>
+        
         <DisconnectButton
           wallet={wallet}
           setPublicToken={setPublicToken}

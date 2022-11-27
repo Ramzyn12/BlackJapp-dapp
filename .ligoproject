@@ -1,1 +1,31 @@
-{}
+type storage = int
+
+const playerAddress = Tezos.get_sender();
+
+const receiver : contract<unit> =
+    match ((Tezos.get_contract_opt (playerAddress) as option<contract<unit>>), {
+      Some: (contract : contract<unit>) => contract,
+      None: () => (failwith ("Not a contract") as contract<unit>)
+});
+
+
+type parameter = 
+| ["Send_winnings", bool]
+
+type return_ = [list<operation>, storage]; 
+
+const entry_B = ([b, store] : [bool, storage]) : [list<operation>, storage] => {
+    if (b == true){
+      const payoutOperation : operation = Tezos.transaction (unit, 4 as tez, receiver);
+      const operations : list<operation> = list([payoutOperation]);
+      return [operations, store];
+    }
+    else{
+        return[list([]) as list<operation>, store];
+    }
+}
+ 
+const main = (action: parameter, store: storage): return_ => 
+match(action, { 
+ Send_winnings: b => entry_B([b, store])
+});
