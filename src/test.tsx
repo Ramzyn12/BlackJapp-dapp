@@ -7,7 +7,7 @@ import Status from "./components/Status";
 import Controls from "./components/Controls";
 import Hand from "./components/Hand";
 import jsonData from "./deck.json";
-import Transfers from "./components/Transfers";
+import Transfers from "./components/contractSend";
 
 const App = () => {
   const [Tezos, setTezos] = useState<TezosToolkit>(
@@ -325,9 +325,11 @@ const App = () => {
         </div>
         </div>
         <Transfers
-          Tezos={Tezos}
+          contract={contract}
           setUserBalance={setUserBalance}
+          Tezos={Tezos}
           userAddress={userAddress}
+          setStorage={setStorage}
           setDepositMade={setDepositMade}
         />
         <DisconnectButton
