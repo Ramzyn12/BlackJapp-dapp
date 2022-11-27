@@ -283,14 +283,20 @@ const App = () => {
 
   if (!publicToken && !userAddress && !userBalance) {
     return (
+    <div className="main-body">
       <div className="main-box">
         <div className="title">
           <h1>
-            WELCOME TO <br></br>R O J E R
+            WELCOME TO <br></br>
+            <span className="coloured">CHANCUEX</span>
+            
           </h1>
         </div>
+        <div className="description">
+          The World's Best Decentralised <span className="blackjack">Blackjack</span> Game - The <span className="blackjack">Safe</span> Way to Gamble
+        </div>
         <div id="dialog">
-          <header>PLEASE CONNECT YOUR WALLET TO CONTINUE</header>
+          {/* <header>PLEASE CONNECT YOUR WALLET TO CONTINUE</header> */}
 
           <ConnectButton
             Tezos={Tezos}
@@ -306,11 +312,18 @@ const App = () => {
           />
         </div>
       </div>
+    </div>
     );
   } else if (userAddress && !isNaN(userBalance) && !depositMade) {
     return (
-      <div>
-        <h3 className="text-align-center">deposit to continue</h3>
+      <div className="second-page-main">
+        <h1 className="coloured red">CHANCUEX</h1>
+        <div className="message-container">
+        <div className="gamble-message">GREAT! YOUR ALL CONNECTED</div>
+        <div className="gamble-message1">DEPOSIT THE STAKE YOU WISH TO PLACE INTO THE 
+          TEZOS BLOCKCHAIN AND TRY YOUR "CHANCUEX" TO DOUBLE YOUR TEZ!
+        </div>
+        </div>
         <Transfers
           Tezos={Tezos}
           setUserBalance={setUserBalance}
@@ -335,8 +348,10 @@ const App = () => {
     gameFinished
   ) {
     return (
-      <div>
-        <h1 className="buttons"> {String(playerWon)}</h1>
+      <div className="fourth-page-main">
+        {/* <h1 className="buttons"> {String(playerWon)}</h1> */}
+        <h1 className="buttons">{playerWon ? "YOU WIN" : "YOU LOSE"}</h1>
+        <h2>PRESS DISCONNECT TO START AGAIN</h2>
         <DisconnectButton
           wallet={wallet}
           setPublicToken={setPublicToken}
@@ -350,7 +365,7 @@ const App = () => {
     );
   } else if (userAddress && !isNaN(userBalance) && depositMade) {
     return (
-      <div>
+      <div className="third-page-main">
         <Status message={message} balance={userBalance / 1000000} />
         <Controls
           balance={balance}
@@ -365,6 +380,7 @@ const App = () => {
         <Hand title={`Dealer's Hand (${dealerScore})`} cards={dealerCards} />
         <Hand title={`Your Hand (${userScore})`} cards={userCards} />
         <div> </div>
+        <div className="centerer">
         <DisconnectButton
           wallet={wallet}
           setPublicToken={setPublicToken}
@@ -374,6 +390,7 @@ const App = () => {
           setTezos={setTezos}
           setBeaconConnection={setBeaconConnection}
         />
+        </div>
       </div>
     );
   }

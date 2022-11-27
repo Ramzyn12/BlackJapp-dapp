@@ -55,7 +55,7 @@ const Controls: React.FC<ControlsProps> = ({
       return (
         <div className={styles.controlsContainer}>
           <button onClick={() => onBetClick()} className={styles.button}>
-            play
+            PLAY AGAIN
           </button>
         </div>
       );

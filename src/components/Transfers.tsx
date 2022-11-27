@@ -57,7 +57,7 @@ const Transfers = ({
         onChange={(e) => setAmount(dep)}
       />
       <button
-        className="button"
+        className="button2"
         disabled={!recipient && !amount}
         onClick={sendTransfer}
       >

@@ -59,7 +59,7 @@
   width: 30%;
   background: royalblue;
   outline: none;
-  border: 5px solid white;
+  border: 5px solid rgb(0, 0, 0);
   border-radius: 15px;
   box-shadow: 0px 1px 10px rgb(0, 0, 0);
   text-align: center;
